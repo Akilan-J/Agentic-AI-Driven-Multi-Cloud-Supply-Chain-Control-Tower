@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI Supply Chain Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1><span class="highlight">Agentic AI</span> Supply Chain</h1>
+            <p>Real-time demand forecasting and inventory agent decision engine</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Input Panel -->
+            <section class="panel input-panel">
+                <h2>Simulate Inventory Data</h2>
+                <form id="prediction-form">
+                    <div class="form-group">
+                        <label for="product">Product</label>
+                        <select id="product" name="product" required>
+                            <option value="Product A">Product A (High Demand)</option>
+                            <option value="Product B">Product B (Stable Demand)</option>
+                            <option value="Product C">Product C (Low Demand)</option>
+                            <option value="Product D">Product D (Seasonal)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="current_stock">Current Stock Level</label>
+                        <input type="number" id="current_stock" name="current_stock" placeholder="e.g. 50" required min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="month">Current Month (1-12)</label>
+                        <input type="number" id="month" name="month" placeholder="e.g. 11" required min="1" max="12">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="promotions_active">Promotions Active</label>
+                        <select id="promotions_active" name="promotions_active" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="past_sales">Past Month Sales</label>
+                        <input type="number" id="past_sales" name="past_sales" placeholder="e.g. 120" required min="0">
+                    </div>
+
+                    <button type="submit" class="primary-btn" id="run-btn">Run Agent Engine</button>
+                    <div id="loading" class="hidden">Processing via Azure Functions...</div>
+                </form>
+            </section>
+
+            <!-- Results Panel -->
+            <section class="panel results-panel block">
+                <h2>Live Inventory Monitor</h2>
+                
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Stock</th>
+                            <th>Forecast Demand</th>
+                            <th>Agent Decision</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-body">
+                        <!-- Rows added dynamically via JS -->
+                        <tr class="empty-state" id="empty-row">
+                            <td colspan="4">Run the agent to see real-time evaluated results</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="logs-section">
+                    <h3>System Logs</h3>
+                    <div id="logs-container" class="terminal-logs">
+                        <div class="log-entry">System ready. Waiting for input...</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
