@@ -164,9 +164,11 @@ header p {
 
 .main-content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
     width: 100%;
 }
 
@@ -177,10 +179,16 @@ header p {
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 32px;
-    width: 100%;
-    max-width: 850px;
+    flex: 1 1 500px;
+    max-width: 600px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Adjust results panel to be slightly wider if content allows */
+.results-panel {
+    flex: 2 1 600px;
+    max-width: 800px;
 }
 
 .panel:hover {
@@ -421,6 +429,8 @@ select:focus {
 
 @media (max-width: 900px) {
     .main-content {
+        flex-direction: column;
+        align-items: center;
         gap: 2rem;
     }
 
