@@ -128,9 +128,12 @@ body {
 .dashboard-container {
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    position: relative;
 }
 
 header {
@@ -160,24 +163,23 @@ header p {
 }
 
 .main-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
 }
 
 .panel {
     background: var(--panel-bg);
     backdrop-filter: blur(8px);
-    /* Updated */
     -webkit-backdrop-filter: blur(8px);
-    /* Updated */
     border: 1px solid var(--glass-border);
-    /* Updated */
     border-radius: 16px;
-    padding: 24px;
-    /* Updated */
+    padding: 32px;
+    width: 100%;
+    max-width: 850px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    /* Updated */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -392,8 +394,40 @@ select:focus {
     }
 }
 
+.header-actions {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+}
+
+.logout-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-dim);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.logout-btn:hover {
+    background: rgba(244, 63, 94, 0.1);
+    color: var(--error-red);
+    border-color: var(--error-red);
+}
+
 @media (max-width: 900px) {
     .main-content {
-        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .header-actions {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
     }
 }
